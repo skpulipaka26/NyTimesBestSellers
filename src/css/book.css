@@ -22,6 +22,17 @@
     color: grey;
 
 }
+
+.book-rank {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-right: 0.35rem;
+    background-color: #E47911;
+    font-size: 0.80rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
 .book-purchase {
     font-size: 1.25rem;
     font-weight: bold;

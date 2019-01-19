@@ -40,6 +40,10 @@ const Book = (props) => {
                         <p>by <span className="book-author">
                             {book.author}
                         </span></p>
+                        <div className="rank">
+                            <span className="book-rank">#{book.rank} Best Seller</span>
+                            <span>in {book.category.display_name}</span>
+                        </div>
                     </div>
                     <p className="book-description">{book.description}</p>
                     <div>

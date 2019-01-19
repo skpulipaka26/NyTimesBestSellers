@@ -48,10 +48,10 @@ class Books extends Component {
                             <div className="row">
                                 {category.books.map((book, i) => {
                                     return (
-                                        <div className="col books" key={i}>
-                                            <Link to={{ pathname: `/books/${book.title}`, state: book }}>
+                                        <div className="col books" key={i}>                                
+                                            <Link to={{ pathname: `/books/${book.title}`, state: {...book, category: category} }}>
                                                 <img className="book-image shadow" src={book.book_image} alt={book.author} width="50%"
-                                                    style={{ borderRadius: '5px' }} />
+                                                    style={{ borderRadius: '5px', marginLeft: '5px' }} />
                                             </Link>
                                         </div>
                                     );
