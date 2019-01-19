@@ -10,7 +10,7 @@ export const fetchBooks = () => {
             type: FETCH_BOOKS
         })
         try {
-            const res = await axios.get('http://api.nytimes.com/svc/books/v3/lists/overview?api-key=JeIs16fnxd3wCBFDqGrSKUDhEMS2OLVh');
+            const res = await axios.get('https://api.nytimes.com/svc/books/v3/lists/overview?api-key=JeIs16fnxd3wCBFDqGrSKUDhEMS2OLVh');
             dispatch({
                 type: FETCH_BOOKS_SUCCESS,
                 payload: formatResults(res.data.results)
