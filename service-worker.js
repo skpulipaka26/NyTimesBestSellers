@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/skpulipaka26/area-books/precache-manifest.803212e153a8e8e4525645397d6d200d.js"
+  "/area-books/precache-manifest.285e9f44b4da084d54fa150275b7bb9e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/skpulipaka26/area-books/index.html", {
+workbox.routing.registerNavigationRoute("/area-books/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
