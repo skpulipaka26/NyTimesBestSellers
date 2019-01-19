@@ -1,60 +1,53 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 
-import { fetchBooks, fetchBooksSuccess } from './actions/books';
+import { fetchBooks } from './actions/books';
+
+import Layout from './components/Layout';
+import Books from './containers/Books';
 
 import './App.css';
+import Book from './components/Book';
+
 
 class App extends Component {
 
-  getList(list) {
-    if (!list.length) {
-      return null;
-    }
-    return list.map((l, i) => {
-      return (
-        <div key={i}>
-          <h1>{l.list_name}</h1>
-        </div>
-      );
-    });
-
+  componentDidMount() {
+    this.props.fetchBooks();
   }
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <button onClick={this.props.fetchBooks}>Fetch Books</button>
-          {
-            this.props.loading ? <p>loading...</p> : null
-          }
-          {this.getList(this.props.books)}
-        </div>
+      <Layout>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/books/:id" component={Book} />
+            <Route path="/books" component={Books} />
+            <Redirect to="/books" />
+          </Switch>
+        </BrowserRouter>
 
-      </BrowserRouter>
+      </Layout>
     );
   }
 }
 
-const mapStateToProps = ({ nyTimesBooks }) => ({
-  books: nyTimesBooks.books,
-  loading: nyTimesBooks.fetching
-});
+const mapStateToProps = ({ nyTimesBooks }) => {
+  return {
+    ...nyTimesBooks
+  }
+};
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      fetchBooks,
-      fetchBooksSuccess
-    },
-    dispatch
-  )
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchBooks
+  }, dispatch)
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App);

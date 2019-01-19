@@ -1,0 +1,41 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.book-title {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.08rem;
+    line-height: 1.25;
+}
+
+.book-author {
+    color: #347d56;
+    font-weight: bold;
+}
+
+.book-description {
+    margin: 3rem 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: grey;
+
+}
+.book-purchase {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+.book-purchase-link {
+    margin-right: 1rem;
+}
+
+.btn-primary {
+    background-color: #edf3e7;
+    border-color: #edf3e7;
+    text-transform: uppercase;
+    font-weight: bold;
+}

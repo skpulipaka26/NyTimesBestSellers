@@ -1,9 +1,12 @@
 import { FETCH_BOOKS, FETCH_BOOKS_SUCCESS } from '../actions/books';
 
 const intialState = {
-    books: [],
+    bestSellers: {
+        metadata: {},
+        lists: []
+    },
     fetching: false,
-    fetched: false
+    error: null
 };
 
 export default (state = intialState, action) => {
@@ -12,21 +15,21 @@ export default (state = intialState, action) => {
             return {
                 ...state,
                 fetching: true,
-                fetched: false
+                error: null
             };
         case FETCH_BOOKS_SUCCESS:
             return {
                 ...state,
                 fetching: false,
-                fetched: true,
-                books: action.payload
+                error: null,
+                bestSellers: action.payload
             };
         case 'FETCH_BOOKS_ERROR':
             return {
                 ...state,
                 fetching: false,
-                fetched: false,
-                books: []
+                error: action.payload,
+                bestSellers: {}
             };
         default:
             return {

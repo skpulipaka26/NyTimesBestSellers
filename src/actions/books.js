@@ -2,25 +2,34 @@ import axios from 'axios';
 
 export const FETCH_BOOKS = 'FETCH_BOOKS';
 export const FETCH_BOOKS_SUCCESS = 'FETCH_BOOKS_SUCCESS';
+export const FETCH_BOOKS_ERROR = 'FETCH_BOOKS_ERROR';
 
 export const fetchBooks = () => {
     return async (dispatch) => {
         dispatch({
             type: FETCH_BOOKS
         })
-        const res = await axios.get('http://api.nytimes.com/svc/books/v3/lists/overview?api-key=JeIs16fnxd3wCBFDqGrSKUDhEMS2OLVh');
-        dispatch({
-            type: FETCH_BOOKS_SUCCESS,
-            payload: res.data.results.lists
-        });
+        try {
+            const res = await axios.get('http://api.nytimes.com/svc/books/v3/lists/overview?api-key=JeIs16fnxd3wCBFDqGrSKUDhEMS2OLVh');
+            dispatch({
+                type: FETCH_BOOKS_SUCCESS,
+                payload: formatResults(res.data.results)
+            });
+        } catch (error) {
+            dispatch({
+                type: FETCH_BOOKS_ERROR,
+                payload: error
+            });
+        }
 
     };
 
 }
 
-export const fetchBooksSuccess = (books) => {
+const formatResults = (results) => {
+    const { lists, ...metadata } = results;
     return {
-        type: FETCH_BOOKS_SUCCESS,
-        payload: books
+        metadata: metadata,
+        lists: lists
     }
 }
