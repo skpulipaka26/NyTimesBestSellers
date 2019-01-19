@@ -7,7 +7,7 @@ import '../css/book.css';
 const Book = (props) => {
     const book = props.location.state;
     if (!book) {
-        return <Redirect to="/books" />
+        return <Redirect to="/" />
     }
     return (
         <div className="container">

@@ -21,16 +21,15 @@ class App extends Component {
 
   render() {
     return (
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Switch>
-            <Route path="/books/:id" component={Book} />
-            <Route path="/books" component={Books} />
-            <Redirect to="/books" />
+            <Route exact path="/books" component={Books} />
+            <Route exact path="/books/:id" component={Book} />
+            <Redirect exact to="/books" />
           </Switch>
-        </BrowserRouter>
-
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     );
   }
 }
